@@ -10,4 +10,8 @@ export const USER_CONTANTS = {
   password: {
     minLength: 6,
   },
+  nick: {
+    minLength:3,
+    maxLength:20,
+  },
 };

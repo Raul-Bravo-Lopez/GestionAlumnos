@@ -13,12 +13,12 @@ export class AltaAlumnosComponent implements OnInit {
   readonly USER_CONTANTS = USER_CONTANTS;
   readonly USER_ERRORS = USER_ERRORS;
 
-  signInForm: FormGroup;
+  signUpForm: FormGroup;
   showPassword = false;
 
   constructor() {
 
-    this.signInForm = new FormGroup({
+    this.signUpForm = new FormGroup({
       name: new FormControl(null,
         [
           Validators.required,
@@ -62,12 +62,31 @@ export class AltaAlumnosComponent implements OnInit {
           Validators.pattern("(6|7)([0-9]){2}[ -]?(([0-9]){2}[ -]?([0-9]){2}[ -]?([0-9]){2}|([0-9]){3}[ -]?([0-9]){3})"),
         ]
       ),
+      cp: new FormControl(null,
+        [
+          Validators.required,
+          Validators.pattern("28[0-9]{3}"),
+        ]
+      ),
+      location: new FormControl(null,
+      [
+        Validators.required,
+      ]
+      ),
+      nickname: new FormControl(null,
+        [
+          Validators.required,
+          Validators.minLength(USER_CONTANTS.nick.minLength),
+          Validators.maxLength(USER_CONTANTS.nick.maxLength),
+        ]
+      ),
       password: new FormControl(null,
         [
           Validators.required,
           Validators.minLength(USER_CONTANTS.password.minLength),
         ]
       ),
+
     })
 
   }
@@ -76,7 +95,7 @@ export class AltaAlumnosComponent implements OnInit {
   }
 
   submitForm() {
-    if (this.signInForm.invalid){
+    if (this.signUpForm.invalid){
       return;
     }
   }

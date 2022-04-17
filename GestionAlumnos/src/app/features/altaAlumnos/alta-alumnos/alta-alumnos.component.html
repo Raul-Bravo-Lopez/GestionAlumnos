@@ -1,47 +1,47 @@
 <mat-card>
   <mat-card-title>Crear Alumno</mat-card-title>
-  <form [formGroup]="signInForm" ><!-- (ngSubmit)="submitForm()" -->
+  <form [formGroup]="signUpForm" ><!-- (ngSubmit)="submitForm()" -->
 
     <mat-form-field appearance="outline">
       <mat-label>Nombre</mat-label>
       <input matInput type="text" placeholder="Ej: Raúl" formControlName="name" required>
       <mat-icon matSuffix>person</mat-icon>
-      <mat-error *ngIf="signInForm.get('name')?.hasError('required')">{{USER_ERRORS.name.notProvided}}</mat-error>
-      <mat-error *ngIf="signInForm.get('name')?.hasError('minlength')">{{USER_ERRORS.name.minLength}}</mat-error>
-      <mat-error *ngIf="signInForm.get('name')?.hasError('maxlength')">{{USER_ERRORS.name.maxLength}}</mat-error>
+      <mat-error *ngIf="signUpForm.get('name')?.hasError('required')">{{USER_ERRORS.name.notProvided}}</mat-error>
+      <mat-error *ngIf="signUpForm.get('name')?.hasError('minlength')">{{USER_ERRORS.name.minLength}}</mat-error>
+      <mat-error *ngIf="signUpForm.get('name')?.hasError('maxlength')">{{USER_ERRORS.name.maxLength}}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Primer apellido</mat-label>
       <input matInput type="text" placeholder="Ej: Bravo" formControlName="surname1">
       <mat-icon matSuffix>person</mat-icon>
-      <mat-error *ngIf="signInForm.get('surname1')?.hasError('required')">{{USER_ERRORS.lastname.notProvided}}</mat-error>
-      <mat-error *ngIf="signInForm.get('surname1')?.hasError('minlength')">{{USER_ERRORS.lastname.minLength}}</mat-error>
-      <mat-error *ngIf="signInForm.get('surname1')?.hasError('maxlength')">{{USER_ERRORS.lastname.maxLength}}</mat-error>
+      <mat-error *ngIf="signUpForm.get('surname1')?.hasError('required')">{{USER_ERRORS.lastname.notProvided}}</mat-error>
+      <mat-error *ngIf="signUpForm.get('surname1')?.hasError('minlength')">{{USER_ERRORS.lastname.minLength}}</mat-error>
+      <mat-error *ngIf="signUpForm.get('surname1')?.hasError('maxlength')">{{USER_ERRORS.lastname.maxLength}}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Segundo apellido</mat-label>
       <input matInput type="text" placeholder="Ej: López" formControlName="surname2">
       <mat-icon matSuffix>person</mat-icon>
-      <mat-error *ngIf="signInForm.get('surname2')?.hasError('minlength')">{{USER_ERRORS.lastname.minLength}}</mat-error>
-      <mat-error *ngIf="signInForm.get('surname2')?.hasError('maxlength')">{{USER_ERRORS.lastname.maxLength}}</mat-error>
+      <mat-error *ngIf="signUpForm.get('surname2')?.hasError('minlength')">{{USER_ERRORS.lastname.minLength}}</mat-error>
+      <mat-error *ngIf="signUpForm.get('surname2')?.hasError('maxlength')">{{USER_ERRORS.lastname.maxLength}}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
       <input matInput type="email" placeholder="Ej: raulb@gmail.com" formControlName="email">
       <mat-icon matSuffix>email</mat-icon>
-      <mat-error *ngIf="signInForm.get('email')?.hasError('required')">{{USER_ERRORS.email.notProvided}}</mat-error>
-      <mat-error *ngIf="signInForm.get('email')?.hasError('email')">{{USER_ERRORS.email.invalid}}</mat-error>
+      <mat-error *ngIf="signUpForm.get('email')?.hasError('required')">{{USER_ERRORS.email.notProvided}}</mat-error>
+      <mat-error *ngIf="signUpForm.get('email')?.hasError('email')">{{USER_ERRORS.email.invalid}}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>DNI</mat-label>
       <input matInput type="text" placeholder="Ej: 50456092G" formControlName="dni">
       <mat-icon matSuffix>event_note</mat-icon>
-      <mat-error *ngIf="signInForm.get('dni')?.hasError('required')">{{USER_ERRORS.dni.notProvided}}</mat-error>
-      <mat-error *ngIf="signInForm.get('dni')?.hasError('pattern')">{{USER_ERRORS.dni.invalid}}</mat-error>
+      <mat-error *ngIf="signUpForm.get('dni')?.hasError('required')">{{USER_ERRORS.dni.notProvided}}</mat-error>
+      <mat-error *ngIf="signUpForm.get('dni')?.hasError('pattern')">{{USER_ERRORS.dni.invalid}}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -49,8 +49,8 @@
       <span matPrefix>+34 &nbsp;</span>
       <input matInput type="text" placeholder="Ej: 601 786 930" formControlName="phone1">
       <mat-icon matSuffix>contact_phone</mat-icon>
-      <mat-error *ngIf="signInForm.get('phone1')?.hasError('required')">{{USER_ERRORS.phone.notProvided}}</mat-error>
-      <mat-error *ngIf="signInForm.get('phone1')?.hasError('pattern')">{{USER_ERRORS.phone.invalid}}</mat-error>
+      <mat-error *ngIf="signUpForm.get('phone1')?.hasError('required')">{{USER_ERRORS.phone.notProvided}}</mat-error>
+      <mat-error *ngIf="signUpForm.get('phone1')?.hasError('pattern')">{{USER_ERRORS.phone.invalid}}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -58,19 +58,67 @@
       <span matPrefix>+34 &nbsp;</span>
       <input matInput type="text" placeholder="Ej: 601 786 930" formControlName="phone2">
       <mat-icon matSuffix>contact_phone</mat-icon>
-      <mat-error *ngIf="signInForm.get('phone2')?.hasError('pattern')">{{USER_ERRORS.phone.invalid}}</mat-error>
+      <mat-error *ngIf="signUpForm.get('phone2')?.hasError('pattern')">{{USER_ERRORS.phone.invalid}}</mat-error>
     </mat-form-field>
 
-    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <button mat-button [matMenuTriggerFor]="menu">País</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>Item 1</button>
       <button mat-menu-item>Item 2</button>
     </mat-menu>
 
+    <button mat-button [matMenuTriggerFor]="menu">Provincia</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+    <mat-form-field appearance="outline">
+      <mat-label>CP</mat-label>
+      <input matInput type="text" placeholder="Ej: 28905" formControlName="cp">
+      <mat-icon matSuffix>map</mat-icon>
+      <mat-error *ngIf="signUpForm.get('cp')?.hasError('required')">{{USER_ERRORS.cp.notProvided}}</mat-error>
+      <mat-error *ngIf="signUpForm.get('cp')?.hasError('pattern')">{{USER_ERRORS.cp.invalid}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Localidad</mat-label>
+      <input matInput type="text" placeholder="Ej: Getafe" formControlName="location">
+      <mat-icon matSuffix>location_city</mat-icon>
+      <mat-error *ngIf="signUpForm.get('cp')?.hasError('required')">{{USER_ERRORS.location.notProvided}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nickname</mat-label>
+      <input matInput type="text" placeholder="Ej: DaWLenZ" formControlName="nickname">
+      <mat-icon matSuffix>person_pin</mat-icon>
+      <mat-error *ngIf="signUpForm.get('nickname')?.hasError('required')">{{USER_ERRORS.nickname.notProvided}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="text" placeholder="******" formControlName="password" #inputPass>
+      <mat-icon matSuffix>edit</mat-icon>
+      <mat-error *ngIf="signUpForm.get('password')?.hasError('required')">{{USER_ERRORS.password.notProvided}}</mat-error>
+      <mat-error *ngIf="signUpForm.get('password')?.hasError('minlength')">{{USER_ERRORS.password.minLength}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Repetir contraseña</mat-label>
+      <input matInput type="password" placeholder="******" #inputRepeatPass required>
+      <mat-icon matSuffix>edit</mat-icon>
+      <mat-hint class="error" *ngIf="inputRepeatPass.value!=inputPass.value">{{USER_ERRORS.password.notSame}}</mat-hint>
+    </mat-form-field>
+
+    <app-strenght-bar [controller]="signUpForm.get('password')"></app-strenght-bar>
+
     <div>
-      <button mat-raised-button color="primary" type="submit" [disabled]="signInForm.invalid">Continuar</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid">Continuar</button>
       <button mat-raised-button color="accent" mat-dialog-close>Cancelar</button>
     </div>
 
   </form>
 </mat-card>
+
+  <h1><a class="link" mat-tab-button routerLink="/listadoAlumnos">Listado de alumnos</a></h1>
+

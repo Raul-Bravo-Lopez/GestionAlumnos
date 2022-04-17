@@ -1,3 +1,4 @@
+import { AlumnosModuleModule } from './features/altaAlumnos/alumnos-module.module';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,13 +11,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
-import { AltaAlumnosComponent } from './features/altaAlumnos/alta-alumnos/alta-alumnos.component';
-
+import { ListadoAlumnosComponent } from './features/listado-alumnos/listado-alumnos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AltaAlumnosComponent
+    ListadoAlumnosComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +29,7 @@ import { AltaAlumnosComponent } from './features/altaAlumnos/alta-alumnos/alta-a
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    AlumnosModuleModule,
 
   ],
   exports: [

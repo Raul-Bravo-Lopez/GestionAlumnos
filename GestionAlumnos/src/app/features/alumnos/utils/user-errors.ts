@@ -11,13 +11,13 @@ export const USER_ERRORS = {
     },
     name: {
         notProvided: 'No se ha adjuntado un nombre para el usuario',
-        minLength: `Debe contener al menos ${USER_CONTANTS.name.minLength} caracteres`,
-        maxLength: `Debe contener como máximo ${USER_CONTANTS.name.maxLength} caracteres`,
+        minLength: `Debe contener al menos ${USER_CONTANTS.name.minLength} carácteres`,
+        maxLength: `Debe contener como máximo ${USER_CONTANTS.name.maxLength} carácteres`,
     },
     lastname: {
         notProvided: 'No se ha adjuntado un apellido para el usuario',
-        minLength: `Debe contener al menos ${USER_CONTANTS.lastname.minLength} caracteres`,
-        maxLength: `Debe contener como máximo ${USER_CONTANTS.lastname.maxLength} caracteres`,
+        minLength: `Debe contener al menos ${USER_CONTANTS.lastname.minLength} carácteres`,
+        maxLength: `Debe contener como máximo ${USER_CONTANTS.lastname.maxLength} carácteres`,
     },
     dni: {
       notProvided: 'No se ha adjuntado un dni para el usuario',
@@ -30,8 +30,19 @@ export const USER_ERRORS = {
     country: {
       notProvided: 'No se ha adjuntado un país para el usuario',
     },
+    cp: {
+      notProvided: 'No se ha adjuntado un código postal para el usuario',
+      invalid: 'Código postal para España inválido',
+    },
+    location: {
+      notProvided: 'No se ha adjuntado una localidad para el usuario',
+    },
+    nickname: {
+      notProvided: 'No se ha adjuntado un nickname para el usuario',
+    },
     password: {
         notProvided: 'No se ha adjuntado una contraseña para el usuario',
-        minLength: `Debe contener al menos ${USER_CONTANTS.password.minLength} caracteres`,
+        minLength: `Debe contener al menos ${USER_CONTANTS.password.minLength} carácteres`,
+        notSame: 'Las contraseñas no son iguales',
     }
 }
