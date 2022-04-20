@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { USER_CONTANTS } from '../../alumnos/utils/user-constants';
 import { USER_ERRORS } from './../../alumnos/utils/user-errors';
-
+import * as CryptoJS from 'crypto-js';
 @Component({
   selector: 'app-alta-alumnos',
   templateUrl: './alta-alumnos.component.html',
@@ -14,7 +14,7 @@ export class AltaAlumnosComponent implements OnInit {
   readonly USER_ERRORS = USER_ERRORS;
 
   signUpForm: FormGroup;
-  showPassword = false;
+
 
   constructor() {
 
@@ -26,7 +26,7 @@ export class AltaAlumnosComponent implements OnInit {
           Validators.maxLength(USER_CONTANTS.name.maxLength),
         ]
       ),
-        surname1: new FormControl(null,
+      surname1: new FormControl(null,
           [
             Validators.required,
             Validators.minLength(USER_CONTANTS.lastname.minLength),
@@ -86,7 +86,11 @@ export class AltaAlumnosComponent implements OnInit {
           Validators.minLength(USER_CONTANTS.password.minLength),
         ]
       ),
+      password2: new FormControl(null,
+        [
 
+        ]
+      ),
     })
 
   }
@@ -98,6 +102,30 @@ export class AltaAlumnosComponent implements OnInit {
     if (this.signUpForm.invalid){
       return;
     }
+
+   // if(this.signUpForm.get('password')?.value===this.signUpForm.get('password2')){
+
+      let alumno= {
+        'Nombre':this.signUpForm.get('name')?.value,
+        'Apellido':this.signUpForm.get('surname')?.value,
+        'Apellido2': this.signUpForm.get('surname2')?.value,
+      }
+      localStorage.setItem("Alumno", JSON.stringify(alumno));
+
+
+      localStorage.setItem("Email", this.signUpForm.get('email')?.value);
+      localStorage.setItem("DNI", this.signUpForm.get('dni')?.value);
+      localStorage.setItem("Phone1", this.signUpForm.get('phone1')?.value);
+      localStorage.setItem("Phone2", this.signUpForm.get('phone2')?.value);
+      localStorage.setItem("CP", this.signUpForm.get('cp')?.value);
+      localStorage.setItem("Location", this.signUpForm.get('location')?.value);
+      localStorage.setItem("Nickname", this.signUpForm.get('nickname')?.value);
+      let hash = CryptoJS.SHA512(this.signUpForm.get('password')?.value);
+      localStorage.setItem("Password",hash.toString());
+
+    //}
+
+
   }
 
 }
