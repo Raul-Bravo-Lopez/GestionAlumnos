@@ -30,6 +30,9 @@ export const USER_ERRORS = {
     country: {
       notProvided: 'No se ha adjuntado un país para el usuario',
     },
+    prov: {
+      notProvided: 'No se ha adjuntado una provincia para el usuario',
+    },
     cp: {
       notProvided: 'No se ha adjuntado un código postal para el usuario',
       invalid: 'Código postal para España inválido',
