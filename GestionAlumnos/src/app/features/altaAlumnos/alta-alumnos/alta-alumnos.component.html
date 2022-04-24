@@ -13,7 +13,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Primer apellido</mat-label>
-      <input matInput type="text" placeholder="Ej: Bravo" formControlName="surname1" #inputSurname>
+      <input matInput type="text" placeholder="Ej: Bravo" formControlName="surname1">
       <mat-icon matSuffix>person</mat-icon>
       <mat-error *ngIf="signUpForm.get('surname1')?.hasError('required')">{{USER_ERRORS.lastname.notProvided}}</mat-error>
       <mat-error *ngIf="signUpForm.get('surname1')?.hasError('minlength')">{{USER_ERRORS.lastname.minLength}}</mat-error>
@@ -22,7 +22,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Segundo apellido</mat-label>
-      <input matInput type="text" placeholder="Ej: López" formControlName="surname2" #inputSurname2>
+      <input matInput type="text" placeholder="Ej: López" formControlName="surname2">
       <mat-icon matSuffix>person</mat-icon>
       <mat-error *ngIf="signUpForm.get('surname2')?.hasError('minlength')">{{USER_ERRORS.lastname.minLength}}</mat-error>
       <mat-error *ngIf="signUpForm.get('surname2')?.hasError('maxlength')">{{USER_ERRORS.lastname.maxLength}}</mat-error>
@@ -30,7 +30,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
-      <input matInput type="email" placeholder="Ej: raulb@gmail.com" formControlName="email" #inputEmail>
+      <input matInput type="email" placeholder="Ej: raulb@gmail.com" formControlName="email">
       <mat-icon matSuffix>email</mat-icon>
       <mat-error *ngIf="signUpForm.get('email')?.hasError('required')">{{USER_ERRORS.email.notProvided}}</mat-error>
       <mat-error *ngIf="signUpForm.get('email')?.hasError('email')">{{USER_ERRORS.email.invalid}}</mat-error>
@@ -38,16 +38,15 @@
 
     <mat-form-field appearance="outline">
       <mat-label>DNI</mat-label>
-      <input matInput type="text" placeholder="Ej: 50456092G" formControlName="dni" #inputDNI>
+      <input matInput type="text" placeholder="Ej: 12345678Z" formControlName="dni">
       <mat-icon matSuffix>event_note</mat-icon>
       <mat-error *ngIf="signUpForm.get('dni')?.hasError('required')">{{USER_ERRORS.dni.notProvided}}</mat-error>
-      <mat-error *ngIf="signUpForm.get('dni')?.hasError('pattern')">{{USER_ERRORS.dni.invalid}}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Teléfono 1</mat-label>
       <span matPrefix>+34 &nbsp;</span>
-      <input matInput type="text" placeholder="Ej: 601 786 930" formControlName="phone1" #inputPhone>
+      <input matInput type="text" placeholder="Ej: 601 786 930" formControlName="phone1">
       <mat-icon matSuffix>contact_phone</mat-icon>
       <mat-error *ngIf="signUpForm.get('phone1')?.hasError('required')">{{USER_ERRORS.phone.notProvided}}</mat-error>
       <mat-error *ngIf="signUpForm.get('phone1')?.hasError('pattern')">{{USER_ERRORS.phone.invalid}}</mat-error>
@@ -56,7 +55,7 @@
     <mat-form-field appearance="outline">
       <mat-label>Teléfono 2</mat-label>
       <span matPrefix>+34 &nbsp;</span>
-      <input matInput type="text" placeholder="Ej: 601 786 930" formControlName="phone2" #inputPhone2>
+      <input matInput type="text" placeholder="Ej: 601 786 930" formControlName="phone2">
       <mat-icon matSuffix>contact_phone</mat-icon>
       <mat-error *ngIf="signUpForm.get('phone2')?.hasError('pattern')">{{USER_ERRORS.phone.invalid}}</mat-error>
     </mat-form-field>
@@ -64,10 +63,7 @@
     <mat-form-field appearance="outline">
       <mat-label>País</mat-label>
       <select matNativeControl required>
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
+        <option value="volvo">España</option>
       </select>
     </mat-form-field>
 
@@ -83,7 +79,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>CP</mat-label>
-      <input matInput type="text" placeholder="Ej: 28905" formControlName="cp" #inputCP>
+      <input matInput type="text" placeholder="Ej: 28905" formControlName="cp">
       <mat-icon matSuffix>map</mat-icon>
       <mat-error *ngIf="signUpForm.get('cp')?.hasError('required')">{{USER_ERRORS.cp.notProvided}}</mat-error>
       <mat-error *ngIf="signUpForm.get('cp')?.hasError('pattern')">{{USER_ERRORS.cp.invalid}}</mat-error>
@@ -91,14 +87,14 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Localidad</mat-label>
-      <input matInput type="text" placeholder="Ej: Getafe" formControlName="location" #inputLocation>
+      <input matInput type="text" placeholder="Ej: Getafe" formControlName="location">
       <mat-icon matSuffix>location_city</mat-icon>
       <mat-error *ngIf="signUpForm.get('cp')?.hasError('required')">{{USER_ERRORS.location.notProvided}}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Nickname</mat-label>
-      <input matInput type="text" placeholder="Ej: DaWLenZ" formControlName="nickname" #inputNick>
+      <input matInput type="text" placeholder="Ej: DaWLenZ" formControlName="nickname">
       <mat-icon matSuffix>person_pin</mat-icon>
       <mat-error *ngIf="signUpForm.get('nickname')?.hasError('required')">{{USER_ERRORS.nickname.notProvided}}</mat-error>
     </mat-form-field>
@@ -113,7 +109,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Repetir contraseña</mat-label>
-      <input matInput type="password" placeholder="******" #inputRepeatPass required formControlName="password2">
+      <input matInput type="password" placeholder="******" #inputRepeatPass required>
       <mat-icon matSuffix>edit</mat-icon>
       <mat-hint class="error" *ngIf="inputRepeatPass.value!=inputPass.value">{{USER_ERRORS.password.notSame}}</mat-hint>
     </mat-form-field>

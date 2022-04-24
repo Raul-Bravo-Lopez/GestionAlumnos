@@ -1,8 +1,10 @@
+import { DniValidator } from './../validators/dni.validator';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { USER_CONTANTS } from '../../alumnos/utils/user-constants';
 import { USER_ERRORS } from './../../alumnos/utils/user-errors';
 import * as CryptoJS from 'crypto-js';
+import * as country from '../data/country.json'
 @Component({
   selector: 'app-alta-alumnos',
   templateUrl: './alta-alumnos.component.html',
@@ -48,7 +50,7 @@ export class AltaAlumnosComponent implements OnInit {
       dni: new FormControl(null,
         [
           Validators.required,
-          Validators.pattern("[0-9]{8}[A-Z]{1}"),
+          DniValidator.isValidDni()
         ]
       ),
       phone1: new FormControl(null,
@@ -65,7 +67,7 @@ export class AltaAlumnosComponent implements OnInit {
       cp: new FormControl(null,
         [
           Validators.required,
-          Validators.pattern("28[0-9]{3}"),
+          Validators.pattern("[0-5][0-9]{4}"),
         ]
       ),
       location: new FormControl(null,
@@ -84,11 +86,6 @@ export class AltaAlumnosComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(USER_CONTANTS.password.minLength),
-        ]
-      ),
-      password2: new FormControl(null,
-        [
-
         ]
       ),
     })
