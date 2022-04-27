@@ -125,7 +125,7 @@
       <mat-hint class="error" *ngIf="inputRepeatPass.value!=inputPass.value">{{USER_ERRORS.password.notSame}}</mat-hint>
     </mat-form-field>
 
-    <app-strenght-bar [controller]="signUpForm.get('password')"></app-strenght-bar>
+    <app-strenght-bar (strength)="getStrength($event)" [controller]="signUpForm.get('password')"></app-strenght-bar>
 
     <div>
       <button mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid">Continuar</button>

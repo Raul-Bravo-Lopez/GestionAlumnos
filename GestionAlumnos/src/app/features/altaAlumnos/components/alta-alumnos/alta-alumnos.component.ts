@@ -2,7 +2,7 @@ import { AlumnosService } from './../../services/alumnos.service';
 import { PROVINCES } from '../../data/provinces.list';
 import { COUNTRIES } from '../../data/countries.list';
 import { DniValidator } from '../../validators/dni.validator';
-import { Component, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { USER_CONTANTS } from '../../utils/user-constants';
 import { USER_ERRORS } from '../../utils/user-errors';
@@ -17,6 +17,14 @@ import { StrenghtBarComponent } from '../strenght-bar/strenght-bar.component';
 export class AltaAlumnosComponent implements OnInit {
 
   @ViewChild(StrenghtBarComponent) value!: number;
+
+  passStrength: number=0;
+
+  ngAfterViewInit(): void {
+
+    this.passStrength=this.value.valueOf();
+
+  }
 
   readonly USER_CONTANTS = USER_CONTANTS;
   readonly USER_ERRORS = USER_ERRORS;
@@ -121,6 +129,7 @@ export class AltaAlumnosComponent implements OnInit {
   }
 
   submitForm() {
+
     if (this.signUpForm.invalid) {
       return;
     }
@@ -130,13 +139,6 @@ export class AltaAlumnosComponent implements OnInit {
       alert("Las contraseñas no son iguales")
       return;
     }
-
-    if(this.value<8){
-
-
-
-    }
-
 
     let passwordHash = CryptoJS.SHA512(this.signUpForm.get('password')?.value);
 
@@ -156,8 +158,23 @@ export class AltaAlumnosComponent implements OnInit {
       'Password':passwordHash
     }
 
-    localStorage.setItem(this.alumnoService.sumarLastId(), JSON.stringify(alumnos))
+    if(this.passStrength<8){
 
+      let confirmacion = confirm("La contraseña podría ser débil. ¿Quiere continuar?");
+      if(confirmacion){
+        localStorage.setItem(this.alumnoService.sumarLastId(), JSON.stringify(alumnos))
+      }else{
+        return;
+      }
+    } else{
+      localStorage.setItem(this.alumnoService.sumarLastId(), JSON.stringify(alumnos))
+    }
+
+
+  }
+
+  getStrength(strength: number){
+    this.passStrength = strength;
   }
 
 }
