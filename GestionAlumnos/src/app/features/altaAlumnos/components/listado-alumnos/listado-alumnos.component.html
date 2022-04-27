@@ -1,0 +1,44 @@
+<ng-container *ngFor="let alumno of alumnos">
+  <div>
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <div>
+            <button mat-raised-button>
+              <mat-icon>delete_forever</mat-icon>
+            </button>
+            <mat-panel-title>
+              <mat-list-item role="listitem">{{alumno.name}}</mat-list-item>
+            </mat-panel-title>
+          </div>
+        </mat-expansion-panel-header>
+        <div>
+          <div>
+            <mat-list role="list">
+              <mat-list-item role="listitem">
+                <div>
+                  <span> Nombre: {{alumno.name}} </span>
+                  <span> Primer apellido: {{alumno.surname1}} </span>
+                  <span> Segundo apellido: {{alumno?.surname2}} </span>
+                  <span> Email: {{alumno.email}} </span>
+                  <span> DNI: {{alumno.dni}} </span>
+                  <span> Teléfono 1: {{alumno.phone1}} </span>
+                  <span> Teléfono 2: {{alumno?.phone2}} </span>
+                  <span> País: {{alumno.country}} </span>
+                  <span> Provincia: {{alumno.province}} </span>
+                  <span> CP: {{alumno.cp}} </span>
+                  <span> Localidad: {{alumno.location}} </span>
+                  <span> Nickname: {{alumno.nickname}} </span>
+                </div>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <mat-divider></mat-divider>
+</ng-container>
+
+<h1><a class="link" mat-tab-button routerLink="/altaAlumnos">Alta de alumnos</a></h1>
+<h1><a class="link" mat-tab-button routerLink="/modificadoAlumnos">Modificar alumnos</a></h1>

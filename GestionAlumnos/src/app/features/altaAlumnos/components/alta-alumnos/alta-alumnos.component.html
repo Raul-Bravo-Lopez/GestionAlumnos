@@ -62,20 +62,31 @@
 
     <mat-form-field appearance="outline">
       <mat-label>País</mat-label>
-      <select matNativeControl required>
-        <option value="volvo">España</option>
-      </select>
+      <mat-select formControlName="country" required>
+        <mat-option *ngFor="let country of COUNTRIES" [value]="country.name">
+          {{ country.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="signUpForm.get('country')?.hasError('required')">
+        {{ USER_ERRORS.country.notProvided }}
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Provincias</mat-label>
-      <select matNativeControl required>
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-      </select>
-    </mat-form-field>
+      <mat-label>Provincia</mat-label>
+      <ng-container *ngIf="signUpForm.get('country')?.value === 'España'; then spanishProv else otherProv"></ng-container>
+      <ng-template #spanishProv>
+        <mat-select formControlName="prov" required>
+          <mat-option *ngFor="let prov of PROVINCES" [value]="prov.name">
+            {{ prov.name }}
+          </mat-option>
+        </mat-select>
+      </ng-template>
+      <ng-template #otherProv>
+        <input #otherProv matInput placeholder="Provincia" formControlName="prov">
+      </ng-template>
+      <mat-error *ngIf="signUpForm.get('prov')?.hasError('required')">{{USER_ERRORS.prov.notProvided}}</mat-error>
+      </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>CP</mat-label>
@@ -101,7 +112,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Contraseña</mat-label>
-      <input matInput type="text" placeholder="******" formControlName="password" #inputPass>
+      <input matInput type="password" placeholder="******" formControlName="password" #inputPass>
       <mat-icon matSuffix>edit</mat-icon>
       <mat-error *ngIf="signUpForm.get('password')?.hasError('required')">{{USER_ERRORS.password.notProvided}}</mat-error>
       <mat-error *ngIf="signUpForm.get('password')?.hasError('minlength')">{{USER_ERRORS.password.minLength}}</mat-error>
@@ -109,7 +120,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Repetir contraseña</mat-label>
-      <input matInput type="password" placeholder="******" #inputRepeatPass required>
+      <input matInput type="password" placeholder="******" #inputRepeatPass formControlName="password2" required>
       <mat-icon matSuffix>edit</mat-icon>
       <mat-hint class="error" *ngIf="inputRepeatPass.value!=inputPass.value">{{USER_ERRORS.password.notSame}}</mat-hint>
     </mat-form-field>
@@ -125,4 +136,5 @@
 </mat-card>
 
   <h1><a class="link" mat-tab-button routerLink="/listadoAlumnos">Listado de alumnos</a></h1>
+  <h1><a class="link" mat-tab-button routerLink="/modificadoAlumnos">Modificar alumnos</a></h1>
 

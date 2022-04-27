@@ -1,4 +1,4 @@
-[
+export const COUNTRIES = [
   {"name":"Albania"},
   {"name":"Alemania"},
   {"name":"Andorra"},
@@ -41,5 +41,4 @@
   {"name":"Suiza"},
   {"name":"Ucrania"},
   {"name":"Vaticano"}
-
 ]

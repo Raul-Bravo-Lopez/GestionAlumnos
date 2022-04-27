@@ -1,5 +1,4 @@
-import { formatDate } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
 @Component({
@@ -9,6 +8,7 @@ import { AbstractControl } from '@angular/forms';
 })
 export class StrenghtBarComponent implements OnInit {
   @Input() controller: AbstractControl | null = null;
+  @Output() strength = new EventEmitter<number>();
 
   private readonly COLORS = {
     default: 'black',
@@ -61,7 +61,7 @@ export class StrenghtBarComponent implements OnInit {
 
   ngOnInit(): void {
     if (!!this.controller) {
-
+      let puntos;
       var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
       this.controller.valueChanges.subscribe((password: string) => {
@@ -77,6 +77,7 @@ export class StrenghtBarComponent implements OnInit {
         let puntosLetras=0;
         let puntos2Letras=0;
         let puntosBonus=0;
+
 
         for (let i = 0; i < password.length; i++) {
 
@@ -150,7 +151,7 @@ export class StrenghtBarComponent implements OnInit {
 
         }
 
-         let puntos = puntosLongitud+puntosNumeros+puntos2Letras+puntosLetras+puntosSimbolos+puntosBonus;
+         puntos = puntosLongitud+puntosNumeros+puntos2Letras+puntosLetras+puntosSimbolos+puntosBonus;
 
          if(puntos===0){
           this.color = this.OPTIONS.empty.color;
@@ -179,6 +180,8 @@ export class StrenghtBarComponent implements OnInit {
          }
 
       });
+
+      this.strength.emit(puntos);
     }
   }
 
