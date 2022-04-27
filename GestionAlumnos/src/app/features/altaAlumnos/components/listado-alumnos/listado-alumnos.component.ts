@@ -18,6 +18,11 @@ export class ListadoAlumnosComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+    for(let i = 0 ;i<this.alumnos.length;i++){
+      console.log(this.alumnos)
+    }
+
   }
 
 }

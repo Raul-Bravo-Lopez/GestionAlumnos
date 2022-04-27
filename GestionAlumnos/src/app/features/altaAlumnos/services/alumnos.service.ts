@@ -11,21 +11,23 @@ export class AlumnosService {
 
   alumnos: Alumno[] = [];
 
-
   getAlumnos(): Alumno[]{
     const numAlumnos = localStorage.length;
     for(let i = 0; i < numAlumnos; i++){
       let cod = i + '';
       let obj = localStorage.getItem(cod);
       if(!!obj && obj.length > 0){
-        let stu = JSON.parse(obj);
-        this.alumnos.push(stu);
-        stu.id = cod;
+        let alumno = JSON.parse(obj);
+        alumno.id = cod;
+        this.alumnos.push(alumno);
       }
     }
-    return this.alumnos?.map(alumno => new Alumno(alumno.id, alumno.name, alumno.surname1, alumno.email, alumno.dni, alumno.phone1,
-                            alumno.country, alumno.province, alumno.cp, alumno.location, alumno.nickname, alumno.password,
-                            alumno.surname2, alumno.phone2));
+    return this.alumnos?.map(alumno => new Alumno
+      (alumno.id, alumno.name, alumno.surname1,
+      alumno.email, alumno.dni, alumno.phone1,
+      alumno.country, alumno.province, alumno.cp,
+      alumno.location, alumno.nickname, alumno.password,
+      alumno.surname2, alumno.phone2));
   }
 
   sumarLastId(){

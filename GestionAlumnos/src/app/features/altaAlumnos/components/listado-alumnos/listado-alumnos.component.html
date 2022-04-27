@@ -1,14 +1,14 @@
 <ng-container *ngFor="let alumno of alumnos">
   <div>
     <mat-accordion>
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-          <div>
+      <mat-expansion-panel (opened)="panelOpenState=true" (closed)="panelOpenState=false">
+        <mat-expansion-panel-header >
+          <div class="info">
             <button mat-raised-button>
               <mat-icon>delete_forever</mat-icon>
             </button>
             <mat-panel-title>
-              <mat-list-item role="listitem">{{alumno.name}}</mat-list-item>
+              <mat-list-item role="listitem" class="alumno">{{alumno.name}}</mat-list-item>
             </mat-panel-title>
           </div>
         </mat-expansion-panel-header>
@@ -16,8 +16,8 @@
           <div>
             <mat-list role="list">
               <mat-list-item role="listitem">
-                <div>
-                  <span> Nombre: {{alumno.name}} </span>
+                <div class="expansionContent">
+                  <span class="alumno2"> Nombre: {{alumno.name}} </span>
                   <span> Primer apellido: {{alumno.surname1}} </span>
                   <span> Segundo apellido: {{alumno?.surname2}} </span>
                   <span> Email: {{alumno.email}} </span>

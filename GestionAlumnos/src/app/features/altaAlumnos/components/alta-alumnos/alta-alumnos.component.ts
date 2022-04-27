@@ -142,34 +142,24 @@ export class AltaAlumnosComponent implements OnInit {
 
     let passwordHash = CryptoJS.SHA512(this.signUpForm.get('password')?.value);
 
-    let alumnos={
-      'Nombre':this.signUpForm.get('name')?.value,
-      'Apellido1':this.signUpForm.get('surname1')?.value,
-      'Apellido2':this.signUpForm.get('surname2')?.value,
-      'Email':this.signUpForm.get('email')?.value,
-      'DNI':this.signUpForm.get('dni')?.value,
-      'Teléfono1':this.signUpForm.get('phone1')?.value,
-      'Teléfono2':this.signUpForm.get('phone2')?.value,
-      'País':this.signUpForm.get('country')?.value,
-      'Provincia':this.signUpForm.get('prov')?.value,
-      'CP':this.signUpForm.get('cp')?.value,
-      'Localidad':this.signUpForm.get('location')?.value,
-      'Nickname':this.signUpForm.get('nickname')?.value,
-      'Password':passwordHash
-    }
-
     if(this.passStrength<8){
 
       let confirmacion = confirm("La contraseña podría ser débil. ¿Quiere continuar?");
       if(confirmacion){
-        localStorage.setItem(this.alumnoService.sumarLastId(), JSON.stringify(alumnos))
+
+        this.signUpForm.controls['password'].setValue(passwordHash);
+        this.signUpForm.controls['password2'].setValue(passwordHash);
+
+        localStorage.setItem(this.alumnoService.sumarLastId(), JSON.stringify(this.signUpForm?.value))
+        this.signUpForm.reset();
       }else{
         return;
       }
     } else{
-      localStorage.setItem(this.alumnoService.sumarLastId(), JSON.stringify(alumnos))
-    }
 
+      localStorage.setItem(this.alumnoService.sumarLastId(), JSON.stringify(this.signUpForm?.value))
+      this.signUpForm.reset();
+    }
 
   }
 
